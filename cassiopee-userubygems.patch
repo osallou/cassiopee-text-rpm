@@ -1,0 +1,9 @@
+--- bin/cassie.rb.orig	2012-06-13 18:36:32.000000000 +0200
++++ bin/cassie.rb	2012-06-13 18:37:13.986623503 +0200
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env ruby
+-require File.join(File.dirname(__FILE__), '../lib/cassiopee')
++require 'rubygems'
+ require 'optparse'
+ require 'logger'
+  

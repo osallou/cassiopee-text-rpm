@@ -1,0 +1,2 @@
+SPEC files to create rpm packages of gems cassiopee and text.
+A patch is provided for cassiopee to put a binary in /usr/bin and use rubygems.
