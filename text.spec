@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 %define gem_name text
-%define gem_dir /usr/share/rubygems
+%define gem_dir /usr/%_lib/ruby/1.8
 
 Name:    ruby-text
 Version: 1.0.3
@@ -47,12 +47,11 @@ cp -a ./%{gem_dir}/* $RPM_BUILD_ROOT%{gem_dir}/
 
 %files
 %defattr(-,root,root)
-/usr/share/rubygems/cache/%{gem_name}-%{version}.gem
-/usr/share/rubygems/gems/%{gem_name}-%{version}
-/usr/share/rubygems/doc/%{gem_name}-%{version}
-/usr/share/rubygems/specifications/%{gem_name}-%{version}.gemspec
+%{gem_dir}/cache/%{gem_name}-%{version}.gem
+%{gem_dir}/gems/%{gem_name}-%{version}
+%{gem_dir}/doc/%{gem_name}-%{version}
+%{gem_dir}/specifications/%{gem_name}-%{version}.gemspec
 
 %changelog
-* Wed Jun 13 2012 Olivier Sallou <olivier.sallou@irisa.fr> - 1.2.1-1
+* Wed Jun 13 2012 Olivier Sallou <olivier.sallou@irisa.fr> - 1.0.3-1
 - Fedora packaging
- 

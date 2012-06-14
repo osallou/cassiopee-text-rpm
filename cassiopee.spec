@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 %define gem_name cassiopee
-%define gem_dir /usr/share/rubygems
+%define gem_dir /usr/%_lib/ruby/1.8
 
 Name:    cassiopee
 Version: 0.1.9
@@ -46,18 +46,17 @@ mkdir -p $RPM_BUILD_ROOT%{gem_dir}
 mkdir -p $RPM_BUILD_ROOT%{_bindir}
 cp -a ./%{gem_dir}/* $RPM_BUILD_ROOT%{gem_dir}/
 
-cp -a $RPM_BUILD_ROOT/usr/share/rubygems/gems/%{gem_name}-%{version}/bin/cassie.rb $RPM_BUILD_ROOT%{_bindir}/cassie
+cp -a $RPM_BUILD_ROOT/%{gem_dir}/gems/%{gem_name}-%{version}/bin/cassie.rb $RPM_BUILD_ROOT%{_bindir}/cassie
 chmod 755 $RPM_BUILD_ROOT%{_bindir}/cassie
 
 %files
 %defattr(-,root,root)
-/usr/share/rubygems/cache/%{gem_name}-%{version}.gem
-/usr/share/rubygems/gems/%{gem_name}-%{version}
-/usr/share/rubygems/doc/%{gem_name}-%{version}
-/usr/share/rubygems/specifications/%{gem_name}-%{version}.gemspec
+%{gem_dir}/cache/%{gem_name}-%{version}.gem
+%{gem_dir}/gems/%{gem_name}-%{version}
+%{gem_dir}/doc/%{gem_name}-%{version}
+%{gem_dir}/specifications/%{gem_name}-%{version}.gemspec
 /usr/bin/cassie
 
 %changelog
 * Wed Jun 13 2012 Olivier Sallou <olivier.sallou@irisa.fr> - 0.1.9-1
 - Fedora packaging
- 
