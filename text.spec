@@ -4,7 +4,7 @@
 %define gem_dir /usr/share/rubygems
 
 Name:    ruby-text
-Version: 1.2.1
+Version: 1.0.3
 Release: 1%{?dist}
 Summary: Collection of text algorithms
 Group: Applications/System
