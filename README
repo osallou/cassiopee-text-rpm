@@ -1,2 +1,7 @@
 SPEC files to create rpm packages of gems cassiopee and text.
 A patch is provided for cassiopee to put a binary in /usr/bin and use rubygems.
+
+
+For CentOS, gem_dir must be modified to use lib instead of %_lib as ruby gems are always loaded in /usr/lib, whatever the architecture.
+
+In Fedora17, gem_dir is /usr/share/gems

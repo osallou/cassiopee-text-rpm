@@ -1,6 +1,9 @@
 %global debug_package %{nil}
 
 %define gem_name text
+
+# For CentOS, even in 64bits, must be in lib, not lib64
+# Should not use %_lib in this case
 %define gem_dir /usr/%_lib/ruby/1.8
 
 Name:    ruby-text
