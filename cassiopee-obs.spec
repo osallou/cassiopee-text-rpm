@@ -18,9 +18,13 @@
 
 
 %if 0%{?fedora} == 17
-%define gem_dir /usr/%_lib/ruby/gems/1.9
+%define gem_dir /usr/share/gems
+%else
+%if 0%{?centos_version} || 0%{?fedora} || 0%{?mdkversion}
+%define gem_dir /usr/lib/ruby/gems/1.8
 %else
 %define gem_dir /usr/%_lib/ruby/gems/1.8
+%endif
 %endif
 
 Name:    cassiopee
@@ -29,7 +33,9 @@ Release: 1%{?dist}
 Summary: Library to search in string with errors
 Group: Applications/System
 
-#BuildArch: noarch
+%if 0%{?fedora} == 17
+BuildArch: noarch
+%endif
 
 License:  Ruby
 URL: http://rubygems.org/gems/text
@@ -37,6 +43,8 @@ URL: http://rubygems.org/gems/text
 Source: %{gem_name}-%{version}.gem
 
 Autoreq: 0
+
+Patch0: cassiopee-userubygems.patch
 
 
 %if (0%{?fedora} == 17 || 0%{?sles_version})
@@ -53,6 +61,7 @@ Requires:  ruby(abi) = 1.8, rubygems, ruby-text
 %prep 
 gem unpack %{SOURCE0}
 %setup -q -D -T -n %{gem_name}-%{version}
+%patch0
 %if (0%{?suse_version} || 0%{?sles_version})
   gem spec %{SOURCE0} -l > %{gem_name}.gemspec
 %else

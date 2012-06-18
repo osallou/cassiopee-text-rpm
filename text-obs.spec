@@ -18,10 +18,16 @@
 
 
 %if 0%{?fedora} == 17
-%define gem_dir /usr/%_lib/ruby/gems/1.9
+%define gem_dir /usr/share/gems
+%else
+%if 0%{?centos_version} || 0%{?fedora} || 0%{?mdkversion}
+%define gem_dir /usr/lib/ruby/gems/1.8
 %else
 %define gem_dir /usr/%_lib/ruby/gems/1.8
 %endif
+%endif
+
+
 
 Name:    ruby-text
 Version: 1.2.1
@@ -29,7 +35,9 @@ Release: 1%{?dist}
 Summary: Collection of text algorithms
 Group: Applications/System
 
-#BuildArch: noarch
+%if 0%{?fedora} == 17
+BuildArch: noarch
+%endif
 
 License:  Ruby
 URL: http://rubygems.org/gems/text
@@ -84,4 +92,3 @@ cp -a ./%{gem_dir}/* %{buildroot}%{gem_dir}/
 %changelog
 * Wed Jun 13 2012 Olivier Sallou <olivier.sallou@irisa.fr> - 1.2.1-1
 - Fedora packaging
-
